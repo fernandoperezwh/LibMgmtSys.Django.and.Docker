@@ -1,0 +1,50 @@
+{% extends 'shared/base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+    <h1>Formulario de Libro cbv</h1>
+
+
+    <form method="post" enctype="multipart/form-data">{% csrf_token %}
+        <div class="mb-3 row">
+            <label for="titulo" class="col-sm-2 col-form-label">Titulo</label>
+            <div class="col-sm-10">
+                {{ form.titulo }}
+                <div id="titulo_errors" class="form-text">{{ form.titulo.errors }}</div>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="fecha_publicacion" class="col-sm-2 col-form-label">Fecha de publicación</label>
+            <div class="col-sm-10">
+                {{ form.fecha_publicacion }}
+                <div id="fecha_publicacion_errors" class="form-text">{{ form.fecha_publicacion.errors }}</div>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="autores" class="col-sm-2 col-form-label">Autores</label>
+            <div class="col-sm-10">
+                {{ form.autores }}
+                <div id="autores_errors" class="form-text">{{ form.autores.errors }}</div>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="editor" class="col-sm-2 col-form-label">Editor</label>
+            <div class="col-sm-10">
+                {{ form.editor }}
+                <div id="editor_errors" class="form-text">{{ form.editor.errors }}</div>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="portada" class="col-sm-2 col-form-label">Portada</label>
+            <div class="col-sm-10">
+                {{ form.portada }}
+                <div id="portada_errors" class="form-text">{{ form.portada.errors }}</div>
+            </div>
+        </div>
+
+        <button class="btn btn-outline-primary" type="submit">
+            Continuar
+        </button>
+    </form>
+{% endblock  %}

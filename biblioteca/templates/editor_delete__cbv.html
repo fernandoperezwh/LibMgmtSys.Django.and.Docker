@@ -1,0 +1,18 @@
+{% extends 'shared/base.html' %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <h1>Eliminar registro del editor: {{ object.nombre }}</h1>
+
+    <form method="post">{% csrf_token %}
+        <button class="btn btn-danger" type="submit">
+            Eliminar
+        </button>
+        <a class="btn btn-default" href="{% url 'editores_cbv' %}">
+            Cancelar
+        </a>
+    </form>
+{% endblock  %}
+

@@ -1,0 +1,53 @@
+{% extends 'shared/base.html' %}
+{% block title %}
+    Listado de Autores
+{% endblock %}
+
+{% block content %}
+    <h1>Listado de Autores</h1>
+
+    <div class="bibl-table">
+        <div class="bibl-table-header">
+            <a href="/crear/autor_cbv">
+            <button type="button" class="btn btn-success">
+                Crear Autor
+            </button>
+            </a>
+            <form action="" method="get" class="d-flex">
+                {{ buscador.q }}
+                <button class="btn btn-outline-success" type="submit">Buscar</button>
+            </form>
+        </div>
+        <div class="bibl-table-body" style="margin-top: 25px;">
+            <table>
+            <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col">Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for data in object_list %}
+                <tr>
+                    <td> {{data.nombre}} </td>
+                    <td> {{data.apellidos}} </td>
+                    <td> {{data.email}} </td>
+                    <td><a
+                        href="/modificar/autor_cbv/{{ data.id }}"
+                        class="btn btn-secondary">
+                        Editar
+                    </a></td>
+                    <td><a
+                        href="/eliminar/autor_cbv/{{ data.id }}"
+                        class="btn btn-danger">
+                        Eliminar
+                    </a></td>
+                </tr>
+            {% endfor %} 
+            </tbody>
+        </table>
+        </div>
+    </div>
+{% endblock  %}
+
