@@ -26,6 +26,11 @@ Una vez dentro del contenedor, accedemos a mysql para poder ver las tablas que d
 mysql -u libmgmtsys_user -D libmgmtsys_db -p"libmgmtsys_password"
 ```
 
-## Uso
-- Realizar las migraciones con>: ```python manage.py migrate```
-- Ejecutar la aplicación con: ```python manage.py runserver```
+### 3. Hostea en tu equipo el dominio `libmgmtsys.com`
+
+Edita el archivo `/etc/hosts/` y agrega la siguiente linea
+```bash
+127.0.0.1	libmgmtsys.com
+```
+
+### 4. Ingresa desde el navegador a `http://libmgmtsys.com/`
