@@ -1,0 +1,55 @@
+{% extends 'shared/base.html' %}
+{% block title %}
+    Listado de Editores
+{% endblock %}
+
+{% block content %}
+    <h1>Listado de Editores</h1>
+
+    <div class="bibl-table">
+        <div class="bibl-table-header">
+            <a href="/crear/editor_cbv">
+            <button type="button" class="btn btn-success">
+                Crear Editor
+            </button>
+            </a>
+        </div>
+        <div class="bibl-table-body" style="margin-top: 25px;">
+            <table>
+            <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Domicilio</th>
+                <th scope="col">Ciudad</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Pais</th>
+                <th scope="col">Sitio oficial</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for data in object_list %}
+                <tr>
+                    <td> {{data.nombre}} </td>
+                    <td> {{data.domicilio}} </td>
+                    <td> {{data.ciudad}} </td>
+                    <td> {{data.estado}} </td>
+                    <td> {{data.pais}} </td>
+                    <td> <a href="{{data.website}}">Ir a sitio</a></td>
+                    <td><a
+                        href="/modificar/editor_cbv/{{ data.id }}"
+                        class="btn btn-secondary">
+                        Editar
+                    </a></td>
+                    <td><a
+                        href="/eliminar/editor_cbv/{{ data.id }}"
+                        class="btn btn-danger">
+                        Eliminar
+                    </a></td>
+                </tr>
+            {% endfor %} 
+            </tbody>
+        </table>
+        </div>
+    </div>
+{% endblock  %}
+

@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: libmgmtsys_db
+      MYSQL_USER: libmgmtsys_user
+      MYSQL_PASSWORD: libmgmtsys_password
+  backend:
+    build:
+      context: .
+      dockerfile: ./docker/backend/Dockerfile
+    depends_on:
+      - db
+  nginx:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - backend

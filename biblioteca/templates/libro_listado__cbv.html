@@ -1,0 +1,62 @@
+{% extends 'shared/base.html' %}
+
+{% load bibl_tags %}
+
+{% block title %}
+    Listado de Libros
+{% endblock %}
+
+{% block content %}
+    <h1>Listado de Libros</h1>
+
+    <div class="bibl-table">
+        <div class="bibl-table-header">
+            <a href="/crear/libro_cbv">
+            <button type="button" class="btn btn-success">
+                Crear Libro
+            </button>
+            </a>
+        </div>
+
+        <div class="bibl-table-body" style="margin-top: 25px;">
+            <table>
+                <thead>
+                <tr>
+                    <th scope="col">Portada</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Fecha de publicación</th>
+                    <th scope="col">Autores</th>
+                    <th scope="col">Editor</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for data in object_list %}
+                    <tr>
+                        <td>
+                            {% if data.portada %}
+                                <img src="/media/{{data.portada}}"
+                                    style="width: 100px;">
+                            {% else %} No image {% endif %}
+                        </td>
+                        <td> {{data.titulo}} </td>
+                        <td> {{data.fecha_publicacion}} </td>
+                        <td> {{data.autores.all|join_authores}} </td>
+                        <td> {{data.editor}} </td>
+                        <td>
+                            <a href="/modificar/libro_cbv/{{ data.id }}"
+                               class="btn btn-secondary"
+                            >Editar</a>
+                        </td>
+                        <td>
+                            <a href="/eliminar/libro_cbv/{{ data.id }}"
+                               class="btn btn-danger"
+                            >Borrar</a>
+                        </td>
+                    </tr>
+                {% endfor %} 
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock  %}
+
