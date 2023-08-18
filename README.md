@@ -1,5 +1,4 @@
 # Django Biblioteca
-Practica de libro "La guia definitiva de django" de Adrian Holovaty y Jacob Kaplan Mosss
 
 ## Instalacion 
 ### 1. Construir los servicios del proyecto con el comando
